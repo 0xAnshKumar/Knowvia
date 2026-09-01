@@ -74,8 +74,7 @@ export const systemArchitectureDiagram = `flowchart LR
   JOB --> MOCR["Mistral OCR 4"]
   JOB --> FS["Convex file storage"]
   FN --> OAI["OpenAI<br/>embeddings · chat"]
-  HTTP --> OAI
-  NX -. "events" .-> PH["PostHog"]`;
+  HTTP --> OAI`;
 
 export const chatSequenceDiagram = `sequenceDiagram
   autonumber

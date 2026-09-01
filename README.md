@@ -40,10 +40,6 @@ Knowvia is a document intelligence workspace for teams who need grounded answers
 - Mistral OCR 4 for OCR
 - `pdfjs-dist` for PDF parsing
 
-### Analytics
-
-- PostHog
-
 ## High-Level Architecture
 
 ### Document flow
@@ -78,7 +74,6 @@ Knowvia is a document intelligence workspace for teams who need grounded answers
 - Multiple conversations per document (rename, delete)
 - Citation rendering with in-PDF text highlighting
 - PDF page navigation
-- PostHog event tracking
 
 ## Environment Variables
 
@@ -102,13 +97,8 @@ Copy `.env.example` to `.env.local` and provide values for:
 - `OPENAI_CHAT_REASONING_EFFORT`
 - `MISTRAL_API_KEY`
 - `MISTRAL_OCR_MODEL`
-- `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN`
-- `NEXT_PUBLIC_POSTHOG_HOST`
 
-`NEXT_PUBLIC_POSTHOG_KEY` is still supported as a fallback alias for existing
-local environments.
-
-### Clerk JWT template
+## Local Development
 
 Convex authenticates requests using a Clerk JWT template named **`convex`**. In
 the Clerk dashboard, create a JWT template called `convex` (the Convex preset),

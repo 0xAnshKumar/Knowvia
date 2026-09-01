@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   AiMagicIcon,
-  Analytics01Icon,
   Database01Icon,
   File01Icon,
   Shield01Icon,
@@ -60,12 +59,6 @@ export const selfHostingGroup: DocsGroup = {
                     icon: File01Icon,
                     description:
                       "OCR 4 extracts page text from every uploaded PDF. Requires an API key from console.mistral.ai.",
-                  },
-                  {
-                    title: "PostHog",
-                    icon: Analytics01Icon,
-                    description:
-                      "Optional. Product analytics for page views and events. Omit the env vars to disable.",
                   },
                 ]}
               />
@@ -215,7 +208,6 @@ pnpm build`}</CodeBlock>
                 "OPENAI_API_KEY, OPENAI_EMBEDDING_MODEL, and OPENAI_CHAT_MODEL are set.",
                 "MISTRAL_API_KEY and MISTRAL_OCR_MODEL are set.",
                 "SITE_URL and NEXT_PUBLIC_SITE_URL match the production domain.",
-                "PostHog values are set if analytics should run (optional).",
               ]}
             />
           ),

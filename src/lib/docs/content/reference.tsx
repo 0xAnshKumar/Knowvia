@@ -498,28 +498,6 @@ export const referenceGroup: DocsGroup = {
             />
           ),
         },
-        {
-          id: "analytics",
-          title: "Analytics (optional)",
-          body: (
-            <EnvTable
-              rows={[
-                {
-                  name: "NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN",
-                  purpose:
-                    "PostHog project token. Omit to disable analytics entirely. NEXT_PUBLIC_POSTHOG_KEY is supported as a fallback alias.",
-                  required: false,
-                },
-                {
-                  name: "NEXT_PUBLIC_POSTHOG_HOST",
-                  purpose:
-                    "PostHog ingest endpoint. Default is https://us.i.posthog.com.",
-                  required: false,
-                },
-              ]}
-            />
-          ),
-        },
       ],
     },
     {
