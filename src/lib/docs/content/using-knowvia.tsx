@@ -25,10 +25,10 @@ export const usingKnowviaGroup: DocsGroup = {
   title: "Using Knowvia",
   pages: [
     {
-      slug: "using-knowvia/dashboard",
+      slug: "using-knowvia/workspace",
       group: "Using Knowvia",
       eyebrow: "Workspace",
-      title: "Dashboard",
+      title: "Workspace",
       description:
         "The protected workspace for uploads, document selection, PDF preview, and chat.",
       sections: [
@@ -38,7 +38,7 @@ export const usingKnowviaGroup: DocsGroup = {
           body: (
             <>
               <p>
-                The dashboard is organized around the document library, the
+                The workspace is organized around the document library, the
                 active PDF, and the chat panel. Source material and generated
                 answers stay close together so citations can be checked without
                 losing context.

@@ -136,7 +136,7 @@ function mockOpenAi(options: { chunkCitationQuote?: string } = {}) {
             )?.[1]
           : undefined;
       const structured =
-        schemaName === "chat_pdf_summary_answer"
+        schemaName === "knowvia_summary_answer"
           ? {
               answer: "Document-wide summary answer.",
               citations: [{ sourceId: "P2" }],
@@ -250,7 +250,7 @@ describe("page-aware questioning", () => {
       });
     });
 
-    const chunks = await t.query(internal.chatData.getDocumentChunksForPage, {
+    const chunks = await t.query(internal.chat.data.getDocumentChunksForPage, {
       documentId,
       ownerTokenIdentifier: OWNER,
       pageNumber: 2,
@@ -340,7 +340,7 @@ describe("page-aware questioning", () => {
     const conversationId = meta?.conversationId as Id<"conversations">;
     const assistantMessageId = meta?.assistantMessageId as Id<"messages">;
     const firstMessages = await authed.query(
-      api.chatData.getConversationMessages,
+      api.chat.data.getConversationMessages,
       { conversationId },
     );
     expect(firstMessages).toEqual([
@@ -384,7 +384,7 @@ describe("page-aware questioning", () => {
     );
 
     const regeneratedMessages = await authed.query(
-      api.chatData.getConversationMessages,
+      api.chat.data.getConversationMessages,
       { conversationId },
     );
     expect(
@@ -420,7 +420,7 @@ describe("page-aware questioning", () => {
     expect(prompt).toContain("Summary for page 3");
 
     const meta = events.find((event) => event.type === "meta");
-    const messages = await authed.query(api.chatData.getConversationMessages, {
+    const messages = await authed.query(api.chat.data.getConversationMessages, {
       conversationId: meta?.conversationId as Id<"conversations">,
     });
     expect(messages[0]).toMatchObject({
@@ -494,7 +494,7 @@ describe("page-aware questioning", () => {
     });
 
     const meta = events.find((event) => event.type === "meta");
-    const messages = await authed.query(api.chatData.getConversationMessages, {
+    const messages = await authed.query(api.chat.data.getConversationMessages, {
       conversationId: meta?.conversationId as Id<"conversations">,
     });
     expect(messages.at(-1)).toMatchObject({

@@ -2,10 +2,10 @@
  * Mermaid diagram definitions for the docs.
  *
  * These are grounded in the real backend:
- * - convex/documentProcessing.ts  (ingestion: always-OCR, embeddings)
- * - convex/documentChunking.ts     (structure-aware chunk assembly)
- * - convex/chatHelpers.ts          (routing, hybrid retrieval, RRF, citations)
- * - convex/chatStream.ts           (SSE streaming chat HTTP action)
+ * - convex/documents/processing.ts  (ingestion: always-OCR, embeddings)
+ * - convex/documents/chunking.ts    (structure-aware chunk assembly)
+ * - convex/chat/helpers.ts          (routing, hybrid retrieval, RRF, citations)
+ * - convex/chat/stream.ts           (SSE streaming chat HTTP action)
  * - convex/schema.ts               (data model + vector/text indexes)
  */
 
@@ -56,7 +56,7 @@ export const retrievalFlowDiagram = `flowchart TB
 
 export const systemArchitectureDiagram = `flowchart LR
   subgraph client["Browser"]
-    NX["Next.js App Router<br/>landing · docs · dashboard"]
+    NX["Next.js App Router<br/>landing · docs · workspace"]
   end
   subgraph backend["Convex backend"]
     FN["Queries · mutations · actions"]
@@ -79,7 +79,7 @@ export const systemArchitectureDiagram = `flowchart LR
 
 export const chatSequenceDiagram = `sequenceDiagram
   autonumber
-  participant UI as Dashboard
+  participant UI as Workspace
   participant CV as Convex HTTP action
   participant DB as Convex DB
   participant AI as OpenAI
@@ -107,7 +107,7 @@ export const chatSequenceDiagram = `sequenceDiagram
 export const authBoundariesDiagram = `flowchart TB
   V(["Visitor"]) --> Q{"Authenticated session?"}
   Q -->|"no"| PUB["Public<br/>landing · docs · sign-in"]
-  Q -->|"yes"| PROT["Protected<br/>dashboard · documents · chat"]
+  Q -->|"yes"| PROT["Protected<br/>workspace · documents · chat"]
   PUB -. "sign in · Google / GitHub" .-> CL["Clerk"]
   CL --> ID["Convex identity<br/>tokenIdentifier"]
   ID --> PROT

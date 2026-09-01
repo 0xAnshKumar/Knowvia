@@ -142,7 +142,7 @@ export function EvalPage() {
               size="sm"
               className="rounded-full bg-amber-500 px-4 font-semibold text-[#070707] hover:bg-amber-400"
             >
-              <Link href="/dashboard">Try it</Link>
+              <Link href="/workspace">Try it</Link>
             </Button>
           </div>
         </div>
@@ -577,7 +577,7 @@ export function EvalPage() {
               size="lg"
               className="rounded-full bg-amber-500 px-6 font-semibold text-[#070707] hover:bg-amber-400"
             >
-              <Link href="/dashboard">Upload a PDF</Link>
+              <Link href="/workspace">Upload a PDF</Link>
             </Button>
             <Button
               asChild

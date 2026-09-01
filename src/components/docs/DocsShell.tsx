@@ -78,7 +78,7 @@ export function DocsShell({ page, previous, next }: DocsShellProps) {
               className="bg-amber-400 text-[#070707] hover:bg-amber-300"
               size="sm"
             >
-              <Link href="/dashboard">Dashboard</Link>
+              <Link href="/workspace">Workspace</Link>
             </Button>
           </div>
         </div>

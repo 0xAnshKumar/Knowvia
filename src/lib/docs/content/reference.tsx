@@ -410,12 +410,12 @@ export const referenceGroup: DocsGroup = {
                   {
                     name: "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL",
                     purpose:
-                      "Where Clerk sends the user after sign-in when no redirectUrl param is present. Set to /dashboard.",
+                      "Where Clerk sends the user after sign-in when no redirectUrl param is present. Set to /workspace.",
                   },
                   {
                     name: "NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL",
                     purpose:
-                      "Where Clerk sends the user after sign-up when no redirectUrl param is present. Set to /dashboard.",
+                      "Where Clerk sends the user after sign-up when no redirectUrl param is present. Set to /workspace.",
                   },
                 ]}
               />
@@ -555,7 +555,7 @@ export const referenceGroup: DocsGroup = {
                   answer: (
                     <BulletList
                       items={[
-                        "Run npx convex dev in a second terminal — the dashboard requires live Convex functions.",
+                        "Run npx convex dev in a second terminal — the workspace requires live Convex functions.",
                         "Confirm NEXT_PUBLIC_CONVEX_URL points to a running deployment.",
                         "Check the Convex dashboard logs for auth errors — a missing or mis-configured JWT template causes silent identity failures.",
                       ]}

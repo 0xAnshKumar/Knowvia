@@ -1,8 +1,8 @@
 # Knowvia
 
-Knowvia is a customer-facing web application for uploading PDFs and chatting with them through a Retrieval-Augmented Generation workflow. The system is designed to answer questions using only the contents of uploaded documents, with citations that point back to the original source pages.
+Knowvia is a document intelligence workspace for teams who need grounded answers from their PDFs. Upload documents, let Knowvia ingest and index them, then chat with citations that link back to the exact source pages.
 
-## What the Project Does
+## What Knowvia Does
 
 - Upload text-based and scanned PDFs
 - Process documents asynchronously into searchable chunks
@@ -70,7 +70,7 @@ Knowvia is a customer-facing web application for uploading PDFs and chatting wit
 ## Main Features
 
 - Google and GitHub authentication
-- Protected dashboard experience
+- Protected workspace experience
 - PDF upload with document management (rename, delete, retry failed processing)
 - Async OCR ingestion pipeline with automatic retries
 - Hybrid retrieval (vector + full-text) with query routing

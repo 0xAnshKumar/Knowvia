@@ -127,8 +127,8 @@ const docsCards = [
     eyebrow: "Using Knowvia",
     title: "Uploading, asking & citations",
     description:
-      "Learn the dashboard, how questions are answered, and how citations link back to the page.",
-    href: "/docs/using-knowvia/dashboard",
+      "Learn the workspace, how questions are answered, and how citations link back to the page.",
+    href: "/docs/using-knowvia/workspace",
   },
   {
     eyebrow: "Platform",
@@ -392,7 +392,7 @@ export function LandingPage() {
               <div className="h-2.5 w-2.5 rounded-full bg-stone-700/80" />
               <div className="h-2.5 w-2.5 rounded-full bg-stone-700/80" />
               <div className="ml-4 flex-1 rounded-md bg-stone-800/40 px-3 py-1 text-center font-mono text-[11px] text-stone-600">
-                knowvia.app/dashboard
+                knowvia.app/workspace
               </div>
             </div>
 

@@ -106,7 +106,7 @@ export const getStartedGroup: DocsGroup = {
                     title: "Upload a PDF",
                     description: (
                       <>
-                        The dashboard accepts supported text-based and scanned
+                        The workspace accepts supported text-based and scanned
                         PDFs. See the current limits in{" "}
                         <Link href="/docs/using-knowvia/uploading-pdfs#supported-files">
                           Supported files
@@ -266,7 +266,7 @@ cp .env.example .env.local`}</CodeBlock>
               <CodeBlock title="Two terminals">{`pnpm dev
 npx convex dev`}</CodeBlock>
               <Callout type="warning" title="Run Convex alongside Next.js">
-                The docs section is fully static, but the dashboard depends on
+                The docs section is fully static, but the workspace depends on
                 live Convex functions. Run <code>npx convex dev</code> in a
                 second terminal whenever you exercise backend behavior.
               </Callout>
@@ -318,14 +318,14 @@ pnpm build`}</CodeBlock>
         },
         {
           id: "upload",
-          title: "Upload from the dashboard",
+          title: "Upload from the workspace",
           body: (
             <StepList
               items={[
                 {
                   title: "Sign in",
                   description:
-                    "Use Google or GitHub to enter the protected dashboard.",
+                    "Use Google or GitHub to enter the protected workspace.",
                 },
                 {
                   title: "Open upload",

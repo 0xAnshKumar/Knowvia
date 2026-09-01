@@ -41,6 +41,7 @@ next-env.d.ts
 
 .agents/
 .claude/
+.fallow/
 docs/
 !src/app/docs/
 !src/app/docs/**
@@ -51,4 +52,4 @@ docs/
 scripts/
 
 # local evaluation run artifacts
-/evals/runs/
+/benchmarks/runs/

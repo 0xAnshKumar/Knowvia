@@ -1,5 +1,5 @@
 import { httpRouter } from "convex/server";
-import { streamChat } from "./chatStream";
+import { streamChat } from "./chat/stream";
 
 const http = httpRouter();
 

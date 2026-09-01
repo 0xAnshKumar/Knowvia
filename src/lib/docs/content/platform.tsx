@@ -48,7 +48,7 @@ export const platformGroup: DocsGroup = {
                   title: "Next.js App Router",
                   icon: CpuIcon,
                   description:
-                    "Public landing, docs, auth screens, the protected dashboard, and route handlers.",
+                    "Public landing, docs, auth screens, the protected workspace, and route handlers.",
                 },
                 {
                   title: "Convex",
@@ -60,7 +60,7 @@ export const platformGroup: DocsGroup = {
                   title: "Clerk",
                   icon: Shield01Icon,
                   description:
-                    "Google and GitHub authentication for protected dashboard access.",
+                    "Google and GitHub authentication for protected workspace access.",
                 },
                 {
                   title: "AI services",
@@ -100,7 +100,7 @@ export const platformGroup: DocsGroup = {
                 {
                   title: "User uploads a PDF",
                   description:
-                    "The dashboard stores the file in Convex file storage and creates the document record.",
+                    "The workspace stores the file in Convex file storage and creates the document record.",
                 },
                 {
                   title: "Background processing starts",
@@ -439,7 +439,7 @@ export const platformGroup: DocsGroup = {
                     title: "Protected",
                     icon: Key01Icon,
                     description:
-                      "The dashboard and all document data require a valid Clerk session. Unauthenticated requests are redirected to sign-in.",
+                      "The workspace and all document data require a valid Clerk session. Unauthenticated requests are redirected to sign-in.",
                   },
                 ]}
               />
@@ -483,7 +483,7 @@ export const platformGroup: DocsGroup = {
             <p>
               The <code>/sso-callback</code> route handles the OAuth redirect
               from Clerk after a social sign-in. Once Clerk completes the
-              handshake, the user is forwarded to the dashboard. No additional
+              handshake, the user is forwarded to the workspace. No additional
               configuration is needed beyond the Clerk callback URL matching
               your site URL.
             </p>

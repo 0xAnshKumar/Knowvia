@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Knowvia",
   description:
-    "Upload, organize, and work through your PDFs with a protected dashboard.",
+    "Upload, organize, and work through your PDFs in a protected workspace.",
 };
 
 export default function RootLayout({

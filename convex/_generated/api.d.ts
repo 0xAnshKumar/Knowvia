@@ -8,23 +8,23 @@
  * @module
  */
 
+import type * as ai_modelCapabilities from "../ai/modelCapabilities.js";
+import type * as ai_openAi from "../ai/openAi.js";
 import type * as auth from "../auth.js";
-import type * as chatCompletion from "../chatCompletion.js";
-import type * as chatData from "../chatData.js";
-import type * as chatHelpers from "../chatHelpers.js";
-import type * as chatStream from "../chatStream.js";
-import type * as documentChunking from "../documentChunking.js";
-import type * as documentProcessing from "../documentProcessing.js";
-import type * as documentUploadTargets from "../documentUploadTargets.js";
-import type * as documentUploads from "../documentUploads.js";
-import type * as documents from "../documents.js";
-import type * as evaluationConstants from "../evaluationConstants.js";
-import type * as evaluationData from "../evaluationData.js";
-import type * as evaluations from "../evaluations.js";
+import type * as chat_completion from "../chat/completion.js";
+import type * as chat_data from "../chat/data.js";
+import type * as chat_helpers from "../chat/helpers.js";
+import type * as chat_stream from "../chat/stream.js";
+import type * as documents_chunking from "../documents/chunking.js";
+import type * as documents_processing from "../documents/processing.js";
+import type * as documents_records from "../documents/records.js";
+import type * as documents_storage from "../documents/storage.js";
+import type * as documents_uploadTargets from "../documents/uploadTargets.js";
+import type * as documents_uploads from "../documents/uploads.js";
+import type * as evaluation_constants from "../evaluation/constants.js";
+import type * as evaluation_data from "../evaluation/data.js";
+import type * as evaluation_runs from "../evaluation/runs.js";
 import type * as http from "../http.js";
-import type * as modelCapabilities from "../modelCapabilities.js";
-import type * as openAi from "../openAi.js";
-import type * as storageData from "../storageData.js";
 
 import type {
   ApiFromModules,
@@ -34,22 +34,22 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
-  chatCompletion: typeof chatCompletion;
-  chatData: typeof chatData;
-  chatHelpers: typeof chatHelpers;
-  chatStream: typeof chatStream;
-  documentChunking: typeof documentChunking;
-  documentProcessing: typeof documentProcessing;
-  documentUploadTargets: typeof documentUploadTargets;
-  documentUploads: typeof documentUploads;
-  documents: typeof documents;
-  evaluationConstants: typeof evaluationConstants;
-  evaluationData: typeof evaluationData;
-  evaluations: typeof evaluations;
+  "ai/modelCapabilities": typeof ai_modelCapabilities;
+  "ai/openAi": typeof ai_openAi;
+  "chat/completion": typeof chat_completion;
+  "chat/data": typeof chat_data;
+  "chat/helpers": typeof chat_helpers;
+  "chat/stream": typeof chat_stream;
+  "documents/chunking": typeof documents_chunking;
+  "documents/processing": typeof documents_processing;
+  "documents/records": typeof documents_records;
+  "documents/storage": typeof documents_storage;
+  "documents/uploadTargets": typeof documents_uploadTargets;
+  "documents/uploads": typeof documents_uploads;
+  "evaluation/constants": typeof evaluation_constants;
+  "evaluation/data": typeof evaluation_data;
+  "evaluation/runs": typeof evaluation_runs;
   http: typeof http;
-  modelCapabilities: typeof modelCapabilities;
-  openAi: typeof openAi;
-  storageData: typeof storageData;
 }>;
 
 /**

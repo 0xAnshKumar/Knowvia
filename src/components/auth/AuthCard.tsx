@@ -33,7 +33,7 @@ export function AuthCard() {
     try {
       const result = await signIn.sso({
         strategy: PROVIDER_STRATEGY[provider],
-        redirectUrl: "/dashboard",
+        redirectUrl: "/workspace",
         redirectCallbackUrl: "/sso-callback",
       });
 
