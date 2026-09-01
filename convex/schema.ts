@@ -1,0 +1,153 @@
+import { defineSchema, defineTable } from "convex/server";
+import { v } from "convex/values";
+
+const documentStatus = v.union(
+  v.literal("uploading"),
+  v.literal("uploaded"),
+  v.literal("processing"),
+  v.literal("ready"),
+  v.literal("failed"),
+);
+
+const extractionMethod = v.literal("ocr");
+const ocrMethod = v.literal("mistral_ocr");
+const ocrProvider = v.literal("mistral");
+
+export default defineSchema({
+  documents: defineTable({
+    ownerTokenIdentifier: v.string(),
+    title: v.string(),
+    originalFilename: v.string(),
+    documentSummary: v.string(),
+    summaryModel: v.string(),
+    storageContentType: v.optional(v.string()),
+    storageSize: v.number(),
+    sha256: v.string(),
+    fileStorageId: v.optional(v.id("_storage")),
+    status: documentStatus,
+    pageCount: v.optional(v.number()),
+    processingError: v.optional(v.string()),
+    uploadCompletedAt: v.number(),
+    processingStartedAt: v.optional(v.number()),
+    ocrCompletedAt: v.optional(v.number()),
+    embeddingsCompletedAt: v.optional(v.number()),
+    lastProcessedAt: v.optional(v.number()),
+    processingAttemptCount: v.optional(v.number()),
+    ocrMethod: v.optional(ocrMethod),
+    ocrProvider: v.optional(ocrProvider),
+    ocrModel: v.optional(v.string()),
+    mistralFileId: v.optional(v.string()),
+    ocrResultStorageId: v.optional(v.id("_storage")),
+    embeddingModel: v.optional(v.string()),
+    embeddedPageCount: v.optional(v.number()),
+    embeddedChunkCount: v.optional(v.number()),
+  })
+    .index("by_ownerTokenIdentifier", ["ownerTokenIdentifier"])
+    .index("by_ownerTokenIdentifier_and_status", [
+      "ownerTokenIdentifier",
+      "status",
+    ])
+    .index("by_ownerTokenIdentifier_and_originalFilename", [
+      "ownerTokenIdentifier",
+      "originalFilename",
+    ]),
+  documentPages: defineTable({
+    ownerTokenIdentifier: v.string(),
+    ownerDocumentKey: v.string(),
+    documentId: v.id("documents"),
+    pageNumber: v.number(),
+    extractedText: v.string(),
+    summary: v.string(),
+    extractionMethod,
+    embedding: v.optional(v.array(v.float64())),
+    embeddingModel: v.optional(v.string()),
+    embeddingTokenCount: v.optional(v.number()),
+  })
+    .index("by_ownerTokenIdentifier_and_documentId", [
+      "ownerTokenIdentifier",
+      "documentId",
+    ])
+    .index("by_documentId_and_pageNumber", ["documentId", "pageNumber"])
+    .vectorIndex("by_embedding", {
+      vectorField: "embedding",
+      dimensions: 1536,
+      filterFields: ["documentId"],
+    }),
+  documentChunks: defineTable({
+    ownerTokenIdentifier: v.string(),
+    ownerDocumentKey: v.string(),
+    documentId: v.id("documents"),
+    chunkIndex: v.number(),
+    startPageNumber: v.number(),
+    endPageNumber: v.number(),
+    text: v.string(),
+    tokenCount: v.number(),
+    pageSpans: v.array(
+      v.object({
+        pageNumber: v.number(),
+        startOffset: v.number(),
+        endOffset: v.number(),
+      }),
+    ),
+    embedding: v.array(v.float64()),
+    embeddingModel: v.string(),
+  })
+    .index("by_ownerTokenIdentifier_and_documentId", [
+      "ownerTokenIdentifier",
+      "documentId",
+    ])
+    .index("by_documentId_and_chunkIndex", ["documentId", "chunkIndex"])
+    .index("by_documentId_and_startPageNumber", [
+      "documentId",
+      "startPageNumber",
+    ])
+    .searchIndex("search_text", {
+      searchField: "text",
+      filterFields: ["ownerDocumentKey"],
+    })
+    .vectorIndex("by_embedding", {
+      vectorField: "embedding",
+      dimensions: 1536,
+      filterFields: ["documentId"],
+    }),
+  conversations: defineTable({
+    ownerTokenIdentifier: v.string(),
+    documentId: v.id("documents"),
+    title: v.string(),
+    createdAt: v.number(),
+  }).index("by_ownerTokenIdentifier_and_documentId", [
+    "ownerTokenIdentifier",
+    "documentId",
+  ]),
+  messages: defineTable({
+    conversationId: v.id("conversations"),
+    role: v.union(v.literal("user"), v.literal("assistant")),
+    content: v.string(),
+    pageNumber: v.optional(v.number()),
+    status: v.optional(
+      v.union(
+        v.literal("streaming"),
+        v.literal("complete"),
+        v.literal("stopped"),
+        v.literal("failed"),
+      ),
+    ),
+    citations: v.optional(
+      v.array(
+        v.object({
+          pageNumber: v.number(),
+          snippet: v.string(),
+          chunkId: v.optional(v.id("documentChunks")),
+          startPageNumber: v.optional(v.number()),
+          endPageNumber: v.optional(v.number()),
+          quote: v.optional(v.string()),
+          quoteStartOffset: v.optional(v.number()),
+          quoteEndOffset: v.optional(v.number()),
+          pageQuote: v.optional(v.string()),
+          pageQuoteRatio: v.optional(v.number()),
+        }),
+      ),
+    ),
+    createdAt: v.number(),
+  }).index("by_conversationId", ["conversationId"]),
+});
