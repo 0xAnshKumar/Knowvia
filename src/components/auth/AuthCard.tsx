@@ -94,6 +94,20 @@ export function AuthCard() {
 }
 
 function getAuthErrorMessage(authError: unknown) {
+  const message = extractAuthErrorMessage(authError);
+
+  if (message.includes("oauth_github")) {
+    return "GitHub sign-in is not enabled for this Clerk app. In the Clerk dashboard, open SSO connections and turn on GitHub.";
+  }
+
+  if (message.includes("oauth_google")) {
+    return "Google sign-in is not enabled for this Clerk app. In the Clerk dashboard, open SSO connections and turn on Google.";
+  }
+
+  return message;
+}
+
+function extractAuthErrorMessage(authError: unknown) {
   if (authError instanceof Error) {
     return authError.message;
   }

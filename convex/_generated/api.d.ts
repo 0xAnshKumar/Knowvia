@@ -33,9 +33,9 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
-  auth: typeof auth;
   "ai/modelCapabilities": typeof ai_modelCapabilities;
   "ai/openAi": typeof ai_openAi;
+  auth: typeof auth;
   "chat/completion": typeof chat_completion;
   "chat/data": typeof chat_data;
   "chat/helpers": typeof chat_helpers;
